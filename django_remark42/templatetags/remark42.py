@@ -28,10 +28,7 @@ register = template.Library()
 """
 
 def format(html,**kwargs):
-    kwargs.update(
-        host = settings.REMARK42_HOST,
-        site_id = settings.REMARK42_SITE_ID
-    )
+    kwargs.update(host = settings.REMARK42_HOST,site_id = settings.REMARK42_SITE_ID)
     return mark_safe(html.format(**kwargs))
 
 @register.simple_tag
@@ -43,23 +40,23 @@ def remark42_comments_script(max_shown_comments=None,theme=None,title=None):
     )
     return format("""
 <script>
-  var remark_config = {
+  var remark_config = {{
     host: '{host}',
     site_id: '{site_id}',
     components: ['embed'],
     max_shown_comments: '{count}',
     theme: '{theme}',
     page_title: '{title}'
-  };
+  }};
 
-  (function(c) {
-    for(var i = 0; i < c.length; i++){
+  (function(c) {{
+    for(var i = 0; i < c.length; i++){{
       var d = document, s = d.createElement('script');
       s.src = remark_config.host + '/web/' +c[i] +'.js';
       s.defer = true;
       (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || ['embed']);
+    }}
+  }})(remark_config.components || ['embed']);
 </script>
 <noscript>
     Please enable JavaScript to view the comments powered by Remark.
@@ -70,43 +67,43 @@ def remark42_comments_script(max_shown_comments=None,theme=None,title=None):
 def remark42_last_comments_script():
     return format("""
 <script>
-  var remark_config = {
+  var remark_config = {{
     host: '{host}',
     site_id: '{site_id}',
     components: ['last-comments']
-  };
+  }};
 
-  (function(c) {
-    for(var i = 0; i < c.length; i++){
+  (function(c) {{
+    for(var i = 0; i < c.length; i++){{
       var d = document, s = d.createElement('script');
       s.src = remark_config.host + '/web/' +c[i] +'.js';
       s.defer = true;
       (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || ['embed']);
+    }}
+  }})(remark_config.components || ['embed']);
 </script>
 <noscript>
     Please enable JavaScript to view the comments powered by Remark.
 </noscript>
-""",**kwargs)
+""")
 
 @register.simple_tag
 def remark42_counter_script():
     return format("""
 <script>
-  var remark_config = {
+  var remark_config = {{
     host: '{host}',
     site_id: '{site_id}',
     components: ['counter']
-  };
+  }};
 
-  (function(c) {
-    for(var i = 0; i < c.length; i++){
+  (function(c) {{
+    for(var i = 0; i < c.length; i++){{
       var d = document, s = d.createElement('script');
       s.src = remark_config.host + '/web/' +c[i] +'.js';
       s.defer = true;
       (d.head || d.body).appendChild(s);
-    }
-  })(remark_config.components || ['embed']);
+    }}
+  }})(remark_config.components || ['embed']);
 </script>
-""",**kwargs)
+""")
