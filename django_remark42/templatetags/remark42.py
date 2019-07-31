@@ -2,6 +2,10 @@ from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
 
+""""
+https://github.com/umputun/remark
+"""
+
 register = template.Library()
 
 """
@@ -11,8 +15,8 @@ register = template.Library()
 """comments:
 <div id="remark42"></div>
 
-{% remark42_comments_script %}
-{% remark42_comments_script max_shown_comments=10 theme='dark' title='Title' %}
+{% remark42_comments_script 'Page Title' %}
+{% remark42_comments_script 'Page Title' max_shown_comments=10 theme='dark' %}
 """
 
 """last comments:
@@ -32,21 +36,19 @@ def format(html,**kwargs):
     return mark_safe(html.format(**kwargs))
 
 @register.simple_tag
-def remark42_comments_script(max_shown_comments=None,theme=None,title=None):
-    kwargs = dict(
-        max_shown_comments = int(max_shown_comments) if max_shown_comments else getattr(settings,'REMARK42_MAX_SHOWN_COMMENTS',15),
-        theme = theme if theme else getattr(settings,'REMARK42_THEME','light'), # light, dark
-        title = title if title else getattr(settings,'REMARK42_TITLE','Moving to Remark42')
-    )
+def remark42_comments_script(page_title,max_shown_comments=None,theme=None):
+    page_title = page_title.replace("'","\'")
+    max_shown_comments = int(max_shown_comments) if max_shown_comments else getattr(settings,'REMARK42_MAX_SHOWN_COMMENTS',15)
+    theme = theme if theme else getattr(settings,'REMARK42_THEME','light'), # light, dark
     return format("""
 <script>
   var remark_config = {{
     host: '{host}',
     site_id: '{site_id}',
     components: ['embed'],
-    max_shown_comments: '{count}',
+    max_shown_comments: '{max_shown_comments}',
     theme: '{theme}',
-    page_title: '{title}'
+    page_title: '{page_title}'
   }};
 
   (function(c) {{
@@ -61,7 +63,7 @@ def remark42_comments_script(max_shown_comments=None,theme=None,title=None):
 <noscript>
     Please enable JavaScript to view the comments powered by Remark.
 </noscript>
-""",**kwargs)
+""",title=title,max_shown_comments=max_shown_comments,theme=theme)
 
 @register.simple_tag
 def remark42_last_comments_script():

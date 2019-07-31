@@ -35,8 +35,8 @@ comments:
 ```html
 <div id="remark42"></div>
 
-{% remark42_comments_script %}
-{% remark42_comments_script count=10 theme='dark' title='Title' %}
+{% remark42_comments_script 'Page Title' %}
+{% remark42_comments_script 'Page Title' max_shown_comments=10 theme='dark' %}
 ```
 
 last comments:
