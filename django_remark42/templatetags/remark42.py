@@ -63,7 +63,7 @@ def remark42_comments_script(page_title,max_shown_comments=None,theme=None):
 <noscript>
     Please enable JavaScript to view the comments powered by Remark.
 </noscript>
-""",title=title,max_shown_comments=max_shown_comments,theme=theme)
+""",page_title=page_title,max_shown_comments=max_shown_comments,theme=theme)
 
 @register.simple_tag
 def remark42_last_comments_script():
