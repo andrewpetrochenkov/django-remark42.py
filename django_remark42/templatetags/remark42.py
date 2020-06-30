@@ -39,7 +39,7 @@ def format(html,**kwargs):
 def remark42_comments_script(page_title,max_shown_comments=None,theme=None):
     page_title = page_title.replace("'","\'")
     max_shown_comments = int(max_shown_comments) if max_shown_comments else getattr(settings,'REMARK42_MAX_SHOWN_COMMENTS',15)
-    theme = theme if theme else getattr(settings,'REMARK42_THEME','light'), # light, dark
+    theme = theme if theme else getattr(settings,'REMARK42_THEME','light') # light, dark
     return format("""
 <script>
   var remark_config = {{

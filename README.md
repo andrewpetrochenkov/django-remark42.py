@@ -1,19 +1,18 @@
 <!--
-https://pypi.org/project/readme-generator/
-https://pypi.org/project/python-readme-generator/
-https://pypi.org/project/django-readme-generator/
+https://readme42.com
 -->
 
-[![](https://img.shields.io/pypi/pyversions/django-remark42.svg?longCache=True)](https://pypi.org/project/django-remark42/)
-[![](https://img.shields.io/pypi/v/django-remark42.svg?maxAge=3600)](https://pypi.org/project/django-remark42/)
-[![Travis](https://api.travis-ci.org/andrewp-as-is/django-remark42.py.svg?branch=master)](https://travis-ci.org/andrewp-as-is/django-remark42.py/)
 
-#### Installation
+[![](https://img.shields.io/pypi/v/django-remark42.svg?maxAge=3600)](https://pypi.org/project/django-remark42/)
+[![](https://img.shields.io/badge/License-Unlicense-blue.svg?longCache=True)](https://unlicense.org/)
+[![](https://github.com/andrewp-as-is/django-remark42.py/workflows/tests42/badge.svg)](https://github.com/andrewp-as-is/django-remark42.py/actions)
+
+### Installation
 ```bash
 $ [sudo] pip install django-remark42
 ```
 
-#### `settings.py`
+##### `settings.py`
 ```python
 INSTALLED_APPS+= [
     'django_remark42'
@@ -57,5 +56,5 @@ counter:
 +   [github.com/umputun/remark](https://github.com/umputun/remark)
 
 <p align="center">
-    <a href="https://pypi.org/project/django-readme-generator/">django-readme-generator</a>
+    <a href="https://readme42.com/">readme42.com</a>
 </p>
